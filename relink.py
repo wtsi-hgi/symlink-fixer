@@ -50,7 +50,7 @@ if __name__ == "__main__":
                 # Replace the old root with the new root
                 new_target_abs = str(target).replace(str(old_root), str(args.new_root), 1)
 
-                # Relativise the new target to the new root
+                # Relativise the new target to the link's parent
                 new_target_rel = Path(os.path.relpath(new_target_abs, link.parent))
 
                 # Unlink, relink and output (link, old target, new target)
