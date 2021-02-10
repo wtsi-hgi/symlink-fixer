@@ -56,10 +56,11 @@ if __name__ == "__main__":
                 # Unlink, relink and output (link, old target, new target)
                 link.unlink()
                 link.symlink_to(new_target_rel)
-                print(f"{link}\t{target}\t{new_target_rel}", end="\0")
+                print(f"{link}\t{target}\t{new_target_rel}")
 
                 break
 
         else:
-            # Not an in-tree link
+            # Not an in-tree link (output to stderr)
+            print(f"{link}", file=sys.stderr)
             continue
