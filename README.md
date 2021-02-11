@@ -4,10 +4,17 @@
 
 Find all symlinks under the current working directory, on Lustre. For
 those whose absolute target is under `OLD_ROOT` (defaults to the
-current working directory), relink them to the new root and then
-relativise to the link's parent directory.
+current working directory and its expansion), relink them to the new
+root and then relativise to the link's parent directory.
 
-Outputs `symlinks-fixed`, a log of the link, original target and new
-target; and `symlinks-unchanged`, a log of links that weren't changed.
+Outputs:
+* `symlinks-fixed`: A log of the link, original target and new
+   target (tab-separated);
+* `symlinks-unchanged`: A log of links that weren't changed.
 
-n.b. Requires Python 3.8
+Notes:
+* Requires Python 3.8, or newer.
+* Set the `DRY_RUN` environment variable to just output what would be
+  done, without changing any symlinks.
+* This is Lustre-specific, but can be generalised to any POSIX
+  filesystem easily by replacing `lfs find` with `find`.

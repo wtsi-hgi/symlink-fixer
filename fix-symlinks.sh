@@ -12,11 +12,12 @@ main() {
   if (( $# )); then
     local -a old_roots=("$@")
   else
-    local -a old_roots=("$(pwd)")
+    local -a old_roots=("${new_root}" "${new_root_canon}")
   fi
 
   lfs find "${new_root_canon}" -type l -print0 \
-  | "${BINPY}" --new-root "${new_root}" \
+  | "${BINPY}" ${DRY_RUN+--dry-run} \
+               --new-root "${new_root_canon}" \
                --old-root "${old_roots[@]}" \
   >  "symlinks-fixed" \
   2> "symlinks-unchanged"
