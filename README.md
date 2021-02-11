@@ -9,8 +9,9 @@ root and then relativise to the link's parent directory.
 
 Outputs:
 * `symlinks-fixed`: A log of the link, original target and new
-   target (tab-separated);
-* `symlinks-unchanged`: A log of links that weren't changed.
+  target (tab-separated);
+* `symlinks-unchanged`: A log of links that weren't changed, with their
+  current target (tab-separated).
 
 Notes:
 * Requires Python 3.8, or newer.

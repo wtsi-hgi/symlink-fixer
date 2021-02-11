@@ -69,4 +69,4 @@ if __name__ == "__main__":
 
         else:
             # Not an in-tree link (output to stderr)
-            print(f"{link}", file=sys.stderr)
+            print(f"{link}\t{target}", file=sys.stderr)
