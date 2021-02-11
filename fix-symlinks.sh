@@ -2,7 +2,7 @@
 
 set -eu
 
-readonly BINSH="$(readlink "$0")"
+readonly BINSH="$(realpath "$0")"
 readonly BINPY="$(dirname "${BINSH}")/relink.py"
 
 main() {
