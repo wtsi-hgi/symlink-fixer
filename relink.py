@@ -56,6 +56,11 @@ if __name__ == "__main__":
                 # Replace the old root with the new root
                 new_target_abs = str(target).replace(str(old_root), str(args.new_root), 1)
 
+                # Check the new target exists
+                if not Path(new_target_abs).exists():
+                    print(f"{link}\t{target}\tIn tree; migrated target doesn't exist", file=sys.stderr)
+                    continue
+
                 # Relativise the new target to the link's parent
                 new_target_rel = Path(os.path.relpath(new_target_abs, link.parent))
 
@@ -69,4 +74,5 @@ if __name__ == "__main__":
 
         else:
             # Not an in-tree link (output to stderr)
-            print(f"{link}\t{target}", file=sys.stderr)
+            reason = "exists" if target.exists() else "doesn't exist"
+            print(f"{link}\t{target}\tOut of tree; target {reason}", file=sys.stderr)
